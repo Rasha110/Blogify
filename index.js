@@ -5,10 +5,12 @@ const blogRoute=require("./routes/blog");
 const cookieParser=require("cookie-parser");
 const Blog=require("./models/blog")
 const app=express();
+require('dotenv').config();
+
 const PORT=8000;
 const mongoose=require("mongoose");
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
-mongoose.connect('mongodb://localhost:27017/blogify').then((e)=>{console.log('MongoDb connected')});
+mongoose.connect(MONGO_URI).then((e)=>{console.log('MongoDb connected')});
 
 //middlewares
 app.set('view engine', 'ejs');

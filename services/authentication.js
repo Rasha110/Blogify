@@ -1,6 +1,7 @@
 //this servuce folder is used to create json web token
-const JWT=require('jsonwebtoken');
-const secret="rasha908";
+require('dotenv').config();
+const JWT = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 function createTokenForUser(user){
     const payload={
         _id:user._id,
