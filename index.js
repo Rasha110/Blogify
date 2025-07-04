@@ -10,7 +10,10 @@ require('dotenv').config();
 const PORT=8000;
 const mongoose=require("mongoose");
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
-mongoose.connect(MONGO_URI).then((e)=>{console.log('MongoDb connected')});
+const MONGO_URI = process.env.MONGO_URI;
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 //middlewares
 app.set('view engine', 'ejs');
